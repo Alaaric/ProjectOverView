@@ -1,6 +1,12 @@
-export const fetchProjectIssues = async (owner: string, repo: string) => {
+export const fetchProjectIssues = async (
+  owner: string,
+  repo: string,
+  state: string
+) => {
   const response = await fetch(
-    `${import.meta.env.VITE_API_URL}/github/repos/${owner}/${repo}/issues`,
+    `${
+      import.meta.env.VITE_API_URL
+    }/github/repos/${owner}/${repo}/issues/${state}`,
     {
       method: "GET",
       headers: {

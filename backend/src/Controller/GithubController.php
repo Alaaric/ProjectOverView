@@ -16,11 +16,11 @@ class GithubController extends AbstractController
         $this->githubApi = $githubApi;
     }
 
-    #[Route('/api/github/repos/{owner}/{repo}/issues', methods: ['GET'])]
-    public function getProjectIssues(string $owner, string $repo): JsonResponse
+    #[Route('/api/github/repos/{owner}/{repo}/issues/{state}', methods: ['GET'])]
+    public function getProjectIssues(string $owner, string $repo, string $state): JsonResponse
     {
         try {
-            $data = $this->githubApi->fetchProjectIssues($owner, $repo);
+            $data = $this->githubApi->fetchProjectIssues($owner, $repo, $state);
             return $this->json($data);
         } catch (\Exception $e) {
             return $this->json(['error' => $e->getMessage()], 500);
