@@ -1,12 +1,13 @@
 {
-  "name": "psrf",
+  "name": "projectoverview",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "generate-secret": "php ./backend/bin/console regenerate-app-secret",
     "setup-db": "php backend/bin/console doctrine:database:drop --if-exists --force && php backend/bin/console doctrine:database:create && php backend/bin/console doctrine:migrations:migrate && php backend/bin/console doctrine:fixtures:load",
     "migrate": "php backend/bin/console doctrine:migrations:migrate && php backend/bin/console doctrine:fixtures:load",
-    "install-all": "concurrently \"cd ./frontend && npm install\" \"cd ./backend && php bin/console cache:clear && composer install && composer update\"",
+    "install-all": "concurrently \"cd ./frontend && npm install\" \"cd ./backend && composer install && php bin/console cache:clear && composer update\"",
     "ia": "npm run install-all",
     "readme-update": "node services/readme-updater.js",
     "ru": "npm run readme-update",
