@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import GithubData from "./components/GithubData";
 import "./App.css";
 
 interface TestData {
@@ -9,11 +8,10 @@ interface TestData {
 }
 
 function App() {
-  const [count, setCount] = useState(0);
   const [data, setData] = useState<TestData[]>([]);
 
   useEffect(() => {
-    fetch("https://localhost:8000/api/tests", {
+    fetch(`${import.meta.env.VITE_API_URL}/tests`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -27,26 +25,9 @@ function App() {
   return (
     <>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <div>
+        <h1>tests</h1>
+        <h2>Github test</h2>
+        <GithubData />
         <h2>Données de Test</h2>
         <ul>
           {data.map((item) => (
