@@ -13,9 +13,9 @@ class GithubApi
         $this->client = $client;
     }
 
-    public function fetchProjectIssues(string $owner, string $repo): array
+    public function fetchProjectIssues(string $owner, string $repo, string $state): array
     {
-        $response = $this->client->request('GET', 'https://api.github.com/repos/' . $owner . "/" . $repo . "/issues", [
+        $response = $this->client->request('GET', 'https://api.github.com/repos/' . $owner . "/" . $repo . "/issues?state=" . $state, [
             'headers' => [
                 'Accept' => 'application/vnd.github+json',
                 'Authorization' => 'Bearer ' . $_ENV['GITHUB_API_TOKEN'],
