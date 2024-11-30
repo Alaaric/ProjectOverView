@@ -8,7 +8,11 @@ function GithubData() {
   useEffect(() => {
     const getData = async () => {
       try {
-        const result = await fetchProjectIssues("Alaaric", "ProjectOverView");
+        const result = await fetchProjectIssues(
+          "Alaaric",
+          "ProjectOverView",
+          "all"
+        );
         setData(result);
       } catch (error) {
         setError("Failed to load data from GitHub.");
